@@ -1,0 +1,48 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model Wedding
+
+    <div>
+            @await Html.PartialAsync("_Nav")
+<br>
+        <form  asp-controller="Wedding" asp-action="WedCreate" class="p-3 mx-auto w-75 shadow bg-white rounded text-center" method="post" >       
+            <h1 class="display-5 mx-auto">Plan a Wedding</h1>
+                <div class="form-group row mx-auto">
+                    <label asp-for="WedderOne" class="col-sm-2 col-form-label offset-1">Wedder One:</label>
+                        <div class="col-sm-8 p-2  mx-auto">
+                            <input asp-for="WedderOne" class="form-control" placeholder="Wedder One">
+                            <span asp-validation-for="WedderOne" class="text-danger"></span>
+                        </div>
+                </div>
+
+                <div class="form-group row mx-auto">
+                    <label asp-for="WedderTwo" class="col-sm-2 col-form-label offset-1">Wedder Two:</label>
+                        <div class="col-sm-8 p-2 mx-auto">
+                            <input asp-for="WedderTwo" class="form-control" placeholder="Wedder Two">
+                            <span asp-validation-for="WedderTwo" class="text-danger"></span>
+                        </div>
+                </div>
+
+                <div class="form-group row  mx-auto">
+                    <label asp-for="Date" class="col-sm-2 col-form-label offset-1">Date:</label>
+                        <div class="col-sm-8  p-2  mx-auto">
+                            <input type="date" asp-for="Date" class="form-control" placeholder="Date">
+                            <span asp-validation-for="Date" class="text-danger"></span>
+                        </div>
+                </div>
+
+                <div class="form-group row  mx-auto ">
+                    <label asp-for="Address" class="col-sm-2 col-form-label offset-1">Address:</label>
+                        <div class="col-sm-8 p-2  mx-auto">
+                            <input asp-for="Address" class="form-control" placeholder="Address">
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="unRSVP m-4">Create</button>
+                </div>
+            </form>
+            <div class="vl"></div>
+    </div>

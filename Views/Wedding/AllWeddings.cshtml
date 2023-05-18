@@ -1,0 +1,51 @@
+
+@{
+    ViewData["Title"] = "View Weddings";
+}
+
+@* @model List<Wedding> *@
+@model MyViewModel
+
+<div class="text-center">
+    @await Html.PartialAsync("_Nav")
+
+<br>
+    <h1 class="display-6">Upcoming Weddings</h1>
+    <br>
+
+<table class="table table-striped w-75 mx-auto shadow p-3 mb-5 bg-white rounded">
+    <thead class="thead-dark">
+    <tr>
+        <th>Wedding Of</th>
+        <th>Date</th>
+        <th>Guest Count</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+    @foreach(Wedding wedding in Model.AllWeddings)
+    {
+        <tr>
+            <td><a href="/wedding/@wedding.WeddingId" style="text-decoration=none"> @wedding.WedderOne & @wedding.WedderTwo</a></td>
+            <td>@wedding.Date.ToString("MMM dd, yyyy")</td>
+            <td>@wedding.Associations.Count()</td>
+            @if(@Context.Session.GetInt32("UserId") == wedding.UserId){
+                <td class="d-flex justify-content-center">
+                    <a href="/edit/@wedding.WeddingId"><button class="edit">Edit</button></a>        
+                    <form asp-controller="Wedding" asp-action="WedDelete" asp-route-weddingId="@wedding.WeddingId" method="post"><button class="delete">Delete</button></form> 
+                </td>
+            } else {
+                bool isRSVP = wedding.Associations.Any(assoc => assoc.UserId == @Context.Session.GetInt32("UserId"));
+                if(isRSVP){
+                    <td><form asp-controller="Wedding" asp-action="RSVPRemove" asp-route-weddingId="@wedding.WeddingId" method="get"><button class="unRSVP">un-RSVP</button></form></td>
+                } else {
+                    <td><form asp-controller="Wedding" asp-action="RSVPAdd" asp-route-weddingId="@wedding.WeddingId"  method="get"><button class="RSVP">RSVP</button></form></td>
+                }                
+            }
+        </tr>
+    }
+    </tbody>
+</table>
+</div>
+

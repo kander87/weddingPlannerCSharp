@@ -1,0 +1,59 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.nav-link:hover{
+  color:rgb(0, 68, 255);
+  background-color: rgb(171, 203, 250);
+  border-radius: 5em;;
+}
+
+a {
+  text-decoration: none;
+  color:black;
+}
+
+.wedDate{
+  font-size: larger;
+}
+
+.RSVP{
+  background-color: rgb(171, 203, 250);
+  border-radius: 1em;
+  border-color: rgb(171, 203, 250);
+
+}
+
+.unRSVP{
+  background-color: rgb(249, 250, 171);
+  border-radius: 2em;
+  border-color:rgb(249, 250, 171);
+}
+
+.delete{
+  background-color: rgb(255, 203, 168);
+  border-radius: 2em;
+  border-color:rgb(255, 203, 168);
+
+}
+
+.edit{
+  background-color: rgb(202, 235, 211);
+  border-radius: 2em;
+  border-color:rgb(202, 235, 211);
+}

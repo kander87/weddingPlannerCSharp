@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "View Wedding Page";
+}
+@* @model Wedding *@
+@model MyViewModel
+
+
+<div class="text-center">
+    @await Html.PartialAsync("_Nav")
+</div>
+
+<div class="d-flex justify-content-center">
+    <div >
+        <h1 class="display-3">@Model.Association.Wedding.WedderOne & @Model.Association.Wedding.WedderTwo</h1>
+<br>
+        <p class="wedDate"><strong>Date:</strong> @Model.Association.Wedding.Date.ToString("MMM dd, yyyy")</p>
+        <p class="wedDate"><strong>Location:</strong> @Model.Association.Wedding.Address</p>
+        <br>
+        <p class="wedDate"><strong>Guests:</strong></p>
+
+        <div class="table table-striped w-50 shadow p-3 mb-5 bg-white rounded">
+            @foreach (Association Association in Model.Association.Wedding.Associations)
+            {
+                <p>@Association.User.FirstName  @Association.User.LastName</p>
+            }
+        </div>
+
+    </div>
+</div>
+
